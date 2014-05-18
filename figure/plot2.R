@@ -1,0 +1,6 @@
+ system("egrep '^[1-2]/2/2007|Date' household_power_consumption.txt > household")
+ png(filename = "plot2.png", width = 480, height = 480)
+ household <- read.csv("household", sep=";")
+datetime <- strptime(paste(as.Date(household$Date, format='%d/%m/%Y'), household$Time), "%Y-%m-%d %H:%M:%S")
+plot(datetime, household$Global_active_power, type = 'l', xlab = "", ylab = "Global Active Power (kilowatts)")
+dev.off()
